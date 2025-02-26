@@ -1,4 +1,4 @@
-# HyperScan SPG29x SDK
+# Sunplus S+Core SDK
  SPG29x SDK with Mattel HyperScan support
 
 ## This is all still very much a work in progress, so it's possibly dangerous.
@@ -11,10 +11,11 @@
 # Support
 
 HyperScan specific:
+- HyperScan custom firmware (adds UART flash rescue and USB booting support)
 - HyperScan controller support
 - HyperScan LEDs
 - USB FAT32 Disk Support (FAT32 formatted as MBR)
-- USB Booting
+- USB Booting (with custom firmware)
 
 SPG29x specific:
 - I2C
@@ -30,27 +31,27 @@ More will hopefully be added in the future..
 This SDK includes multiple examples for how to interface with the hardware, and most of
 the code should be documented. Some examples are as listed:
 
-- [DEMO] - This shows a very basic controller/framebuffer demo
-- [FlashRecovery] - This flashes a custom bootloader to allow CFW/OFW recovery, and live loading of firmware
-- [PONG] - A very terrible PONG game, I wouldn't use it for production of any kind
-- [FlashCFW] - This allows flashing a CFW/OFW permanently from recovery mode on HyperScan
+- [demo] - This shows a very basic controller/framebuffer demo
+- [flashrecovery] - This flashes a custom bootloader to allow for CFW/OFW recovery, and live loading of firmware
+- [pong] - A very terrible PONG game, I wouldn't use it for production of any kind
+- [Flashcfw] - This allows flashing a CFW/OFW permanently from our custom built recovery mode on HyperScan
 
 # SDK Installation
-I've included the S+Core IDE in the tools directory. This only works for Windows, but could be installed in WINE under Linux, which was the reason I chose to develop with this method since the S+Core Binutils/GCC hasn't been supported in years it makes trying to track down and build the toolchain from source unneccessary, and a lot more accessible, plus we can ensure that anyone who uses the IDE from this repo will be on the same versions since the back-end of the IDE uses a fixed version Bintuils/GCC.
+I've included the S+Core IDE in the tools directory. This only works for Windows, but could be installed in WINE under Linux, which was the reason I chose to develop with this method since the S+Core Binutils/GCC hasn't been supported in years it makes trying to track down and build the toolchain from source unnecessary, and a lot more accessible, plus we can ensure that anyone who uses the IDE from this repo will be on the same versions since the back-end of the IDE will be the same Bintuils/GCC.
 
 ## Installing the S+Core IDE
 
-Get this repo and navigate to "HyperScan-SPG29x-SDK\tools\S+core IDE-V2.6.1.exe" and then double click to install.
+Get this repo and navigate to "s-core-sdk\tools\S+core IDE-V2.6.1.exe" and then double click to install.
 
 Done.
 
-Oh, also install python3 because some of the examples use python scripting, as well as the recovery tools.
+Oh, also install python3 because some of the examples use python scripting for some post build process patching, for example with the recovery tools. (be very careful when messing with these things, and know exactly what you're doing, because you can easily brick the HyperScan playing around with the flash)
 
 ## Compiling the examples
 
 All of the examples *SHOULD* be documented in the code. The best way to test out the examples is to get this repo, install the IDE, and then go to File->Open Workspace and then navigate to the examples folder and open the desired example folder and select the .spw/.spg file of that example, and everything should load accordingly.
 
-The IDE will actually produce a HYPER.EXE file for HyperScan by default in the Debug folder of the selected example (ex: /examples/CD/PONG/Debug/Hyper.Exe) when compiled. Some projects have other projects embedded into them, and some are made to run from recovery mode instead of as a HyperScan app.
+The HyperScan examples provided here will actually produce a HYPER.EXE file by default in the Debug folder of the selected example (ex: /examples/cd/pong/Debug/Hyper.Exe) when compiled. Some projects have other projects embedded into them, and some are made to run from recovery mode instead of as a HyperScan app.
 
 ## Considerations
 The HYPER.EXE files on HyperScan are loaded to address 0xA00901FC and their entry point is 0xA0091000 and so if you try to
@@ -83,11 +84,11 @@ It is possible, albeit not as straightforward, to start a completely new project
 ## Loading Homebrew from UART
 #### There now exists a way for us to not only debug our apps via UART, but also to load code through it as well, though this requires some very simple soldering skills. 
 
-When you remove the 4 rubber plugs and 4 screws on the CD side of the Mattel HyperScan, you can then take the bottom of the system apart and you'll notice a label on the board that says "RX" and "TX" as well as a few others. What you'll need to do is get a UART cable and solder the "RX" line from your UART cable to the "TX" solder pad on the Mattel HyperScan, and then solder the "TX" line from your UART cable to the "RX" solder pad on the Mattel HyperScan. Once this is done you can do the following steps:
+When you remove the 4 rubber plugs and 4 screws on the CD side of the Mattel HyperScan, you can then take the bottom of the system apart and you'll notice a label on the board that says "RX" and "TX" as well as a few others. What you'll need to do is get a UART cable and solder the "RX" line from your UART cable to the "TX" solder pad on the Mattel HyperScan, and then solder the "TX" line from your UART cable to the "RX" solder pad on the Mattel HyperScan. After that you solder a GND wire to GND. Once this is done you can do the following steps:
 - Step 1: 
 
 ## Loading Homebrew from USB
-We now have the ability to load homebrew through a FAT32 formatted USB drive. The only prerequisite is that you have to provide power to the USB device externally. This is usually acheived through a USB Y-Splitter with one side having the USB drive, and the other side having only power going through an adapter. Once this is done you can then do the following steps:
+We now have the ability to load homebrew through a FAT32 formatted USB drive. The only prerequisite is that you have to provide power to the USB device externally. This is usually achieved through a USB Y-Splitter with one side having the USB drive, and the other side having only power going through an adapter. It's possible to load the USB loader from a CD, but this is cumbersome at best. The custom firmware allows you to not have to use a CD to load the USB loader, and the custom firmware will recognize an inserted USB device on boot with the appropriate file and load the USB loader from there and give you a menu to launch your app using the folder filename that the hyper.exe exists in as the app name. Once this is done, depending on which method you use to load the USB loader, you can then do the following steps:
 - Step 1:
 
 # Thanks to
