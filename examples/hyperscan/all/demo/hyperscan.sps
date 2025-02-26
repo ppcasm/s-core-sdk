@@ -1,0 +1,313 @@
+# Sunplus S+core IDE Project File - Name = "hyperscan"
+# Sunplus S+core IDE Generated Build File Format Version V2.6.1
+#**DO NOT EDIT**
+CFG = Debug
+
+# Begin Project
+
+!IF "$(CFG)" == "hyperscan - Debug"
+
+OutPut Type = elf
+OutPut Dir = Debug
+Inc Path = 
+Lib Path = 
+Compiler = ..\S_CORE~1.1\GNU\bin\gcc
+Compiler DefFlag = -mscore7 -mel -g -Wall -nostartfiles
+Compiler AddFlag = -DHYPERSCAN
+Assembler = ..\S_CORE~1.1\GNU\bin\as
+Assembler DefFlag = -Wa,-gdwarf-2  -x assembler-with-cpp
+Assembler AddFlag = 
+Linker = ..\S_CORE~1.1\GNU\bin\ld
+Linker DefFlag = -T$(LDSCRIPT)   -lm -lc -lgcc
+Linker AddFlag = -Wl,-Map,$@.map
+RM = ..\S_CORE~1.1\GNU\bin\rm
+RM Flag = 
+AR = ..\S_CORE~1.1\GNU\bin\ar
+AR Flag = 
+OBJCOPY = ..\S_CORE~1.1\GNU\bin\objcopy
+OBJCOPY Flag = 
+OBJDUMP = ..\S_CORE~1.1\GNU\bin\objdump
+OBJDUMP FLag = 
+IMG2BIN = ..\S_CORE~1.1\GNU\bin\img2bin
+IMG2BIN FLag = 
+Lik Lib = 
+Stack base address = a0fffff0
+Pre-Link Description = 
+Pre-Link Command = 
+Post-Build Description = makehyper
+Post-Build Command = 	cd ./Debug && move hyperscan.elf.bin Hyper.Exe	cd ./Debug && del *.o *.bin *.elf *.map *.d *.srec *.dbg *.res
+Custom Build Enable = 0
+WorkDir = 
+Custom Build = 
+Custom Clean = 
+Makefile = 1
+SymBol File = 0
+Binary File = 1
+Dasm File = 0
+Resource File = 0
+LD File = 0
+Use C++ Configuration = 0
+Search Header File = 0
+Initial Stop = Main
+Stop Point = 
+Use_DBCT = 0
+Remote_Device = COM1
+BOOL_CUSTOM_CMD = 0
+STR_CUSTOM_CMD = 
+Parallel = LPT1
+Device = Simulator
+TCP_Address = 
+TCP_Port = 
+Serial_Device = 
+Serial_Speed = 
+Probe_Speed = LOW
+Remote_Manner = Serial
+Remote_Manner = 
+Enable OSInfo = 0
+OSInfo Dll = 
+Project Path = C:\Users\ppcasm\Desktop\HyperScan-SPG29x-SDK-main\examples\hyperscan\all\demo
+OSInfo INIT = 
+Show Cycles = 0
+Exception Debug = 0
+ROM Debug = 0
+Adjust Reloc = 0
+Check Sum = 0
+ReDownload Data = 1
+Class View = 1
+Original Path = 
+Replaced Path = 
+Debug Level = 0
+EXCP_ADDR = 0xA0000000
+Initial Address = 
+Address Check = 0
+!ELSEIF "$(CFG)" == "hyperscan - Release"
+
+OutPut Type = elf
+OutPut Dir = Release
+Inc Path = 
+Lib Path = 
+Compiler = ..\S_CORE~1.1\GNU\bin\gcc
+Compiler DefFlag = -mscore7 -mel -O2 -Wall
+Compiler AddFlag = 
+Assembler = ..\S_CORE~1.1\GNU\bin\as
+Assembler DefFlag = -x assembler-with-cpp
+Assembler AddFlag = 
+Linker = ..\S_CORE~1.1\GNU\bin\ld
+Linker DefFlag = -T$(LDSCRIPT)   -lm -lc -lgcc
+Linker AddFlag = -Wl,-Map,$@.map
+RM = ..\S_CORE~1.1\GNU\bin\rm
+RM Flag = 
+AR = ..\S_CORE~1.1\GNU\bin\ar
+AR Flag = 
+OBJCOPY = ..\S_CORE~1.1\GNU\bin\objcopy
+OBJCOPY Flag = 
+OBJDUMP = ..\S_CORE~1.1\GNU\bin\objdump
+OBJDUMP FLag = 
+IMG2BIN = ..\S_CORE~1.1\GNU\bin\img2bin
+IMG2BIN FLag = 
+Lik Lib = 
+Stack base address = a0fffffc
+Pre-Link Description = 
+Pre-Link Command = 
+Post-Build Description = 
+Post-Build Command = 
+Custom Build Enable = 0
+WorkDir = 
+Custom Build = 
+Custom Clean = 
+Makefile = 1
+SymBol File = 0
+Binary File = 0
+Dasm File = 0
+Resource File = 1
+LD File = 1
+Use C++ Configuration = 0
+Search Header File = 0
+Initial Stop = Main
+Stop Point = 
+Use_DBCT = 0
+Remote_Device = COM1
+BOOL_CUSTOM_CMD = 0
+STR_CUSTOM_CMD = 
+Parallel = LPT2
+Device = Simulator
+TCP_Address = 
+TCP_Port = 
+Serial_Device = 
+Serial_Speed = 
+Probe_Speed = LOW
+Remote_Manner = Serial
+Remote_Manner = 
+Enable OSInfo = 0
+OSInfo Dll = 
+Project Path = 
+OSInfo INIT = 
+Show Cycles = 0
+Exception Debug = 0
+ROM Debug = 0
+Adjust Reloc = 0
+Check Sum = 0
+ReDownload Data = 1
+Class View = 1
+Original Path = 
+Replaced Path = 
+Debug Level = 0
+EXCP_ADDR = 0xA0000000
+Initial Address = 
+Address Check = 0
+!ENDIF
+
+# Name "hyperscan - Debug
+# Name "hyperscan - Release
+# Begin SubItem "hyperscan files"
+
+# Begin Group "Source Files"
+#PROP Default_Filter = c;cpp;cc;C;cxx;asm;s;
+
+# Begin Group "hyperscan"
+#PROP Default_Filter = 
+
+# Begin Group "fatfs"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\hyperscan\fatfs\diskio.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\hyperscan\fatfs\ff.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "hs_controller"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\hyperscan\hs_controller\hs_controller.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# End Group
+# Begin Group "i2c"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\i2c\i2c.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "irq"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\irq\sys_irq.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\irq\sys_isr.s
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\irq\user_irq.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "norflash"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\norflash\norflash.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "tv"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\tv\tv.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "uart"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=..\..\..\..\libs\uart\uart.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Source File
+SOURCE=..\..\..\..\libs\libgloss.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=.\main.c
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "Header Files"
+#PROP Default_Filter = h;inc;
+
+# End Group
+# Begin Group "Resource Files"
+#PROP Default_Filter = rc;
+
+# Begin Source File
+SOURCE=.\hyperscan.rc
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "External Dependencies"
+#PROP Default_Filter = 
+
+# Begin Source File
+SOURCE=.\hyperscan_Prog.ld
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=.\hyperscan_startup.s
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# Begin Source File
+SOURCE=.\Makefile
+USEPARAM=FALSE
+PARAM=
+# End Source File
+
+# End Group
+# Begin Group "External Headers"
+#PROP Default_Filter = h;
+
+# End Group
+# End SubItem
+# End Project
